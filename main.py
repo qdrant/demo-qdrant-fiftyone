@@ -52,7 +52,7 @@ for sample, embedding in tqdm(zip(test_dataset.view(), test_embeddings)):
         [point.payload["ground_truth"] for point in search_results]
     )
     predicted_class, occurences_num = counter.most_common(1)[0]
-    confidence = occurences_num / counter.total()
+    confidence = occurences_num / sum(counter.values())
     sample["ann_prediction"] = fo.Classification(
         label=predicted_class, confidence=confidence
     )
