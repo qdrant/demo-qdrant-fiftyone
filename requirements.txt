@@ -1,0 +1,2 @@
+fiftyone
+qdrant_client==0.8.0
