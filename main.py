@@ -46,8 +46,8 @@ for sample, embedding in tqdm(zip(test_dataset.view(), test_embeddings)):
         top=15,
     )
     # Count the occurrences of each class and select the most common label
-    # with the confidence estimated as number of occurrences of the most common
-    # label divided by total number of results.
+    # with the confidence estimated as the number of occurrences of the most
+    # common label divided by a total number of results.
     counter = collections.Counter(
         [point.payload["ground_truth"] for point in search_results]
     )
@@ -58,7 +58,7 @@ for sample, embedding in tqdm(zip(test_dataset.view(), test_embeddings)):
     )
     sample.save()
 
-# Evaluate the ANN predictions, with response to the values in ground_truth
+# Evaluate the ANN predictions, with respect to the values in ground_truth
 results: fo.ClassificationResults = test_dataset.evaluate_classifications(
     "ann_prediction", gt_field="ground_truth", eval_key="eval_simple"
 )
